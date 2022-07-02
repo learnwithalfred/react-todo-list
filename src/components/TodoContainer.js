@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './Header';
+import InputTodo from './InputTodo';
 import TodosList from './TodosList';
+import { v4 as uuidv4 } from 'uuid';
 
 class TodoContainer extends React.Component {
   state = {
@@ -21,6 +23,7 @@ class TodoContainer extends React.Component {
         completed: false,
       },
     ],
+    title: '',
   };
 
   delTodo = (id) => {
@@ -32,7 +35,7 @@ class TodoContainer extends React.Component {
       ],
     });
   };
-  
+
   handleChange = (id) => {
     this.setState((prevState) => ({
       todos: prevState.todos.map((todo) => {
@@ -55,10 +58,23 @@ class TodoContainer extends React.Component {
     // });
   };
 
+  addTodoItem = (title) => {
+    const newTodo = {
+      id: uuidv4(),
+      title: title,
+      completed: false,
+    };
+    this.setState({
+      todos: [...this.state.todos, newTodo],
+    });
+  };
+
   render() {
     return (
       <div>
         <Header />
+        <InputTodo addTodoProps={this.addTodoItem} />
+
         <TodosList
           todos={this.state.todos}
           handleChangeProps={this.handleChange}
