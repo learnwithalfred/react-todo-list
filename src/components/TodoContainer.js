@@ -1,8 +1,11 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable react/no-access-state-in-setstate */
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import TodosList from './TodosList';
-import { v4 as uuidv4 } from 'uuid';
 
 class TodoContainer extends React.Component {
   state = {
@@ -23,16 +26,11 @@ class TodoContainer extends React.Component {
         completed: false,
       },
     ],
-    title: '',
   };
 
   delTodo = (id) => {
     this.setState({
-      todos: [
-        ...this.state.todos.filter((todo) => {
-          return todo.id !== id;
-        }),
-      ],
+      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
     });
   };
 
@@ -48,20 +46,12 @@ class TodoContainer extends React.Component {
         return todo;
       }),
     }));
-    // this.setState({
-    //   todos: this.state.todos.map((todo) => {
-    //     if (todo.id === id) {
-    //       todo.completed = !todo.completed;
-    //     }
-    //     return todo;
-    //   }),
-    // });
   };
 
   addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
-      title: title,
+      title,
       completed: false,
     };
     this.setState({
@@ -70,7 +60,6 @@ class TodoContainer extends React.Component {
   };
 
   render() {
-
     return (
       <div className="container">
         <div className="inner">

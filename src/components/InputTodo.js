@@ -1,3 +1,9 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable linebreak-style */
+/* eslint-disable no-alert */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 
 class InputTodo extends Component {
@@ -37,7 +43,9 @@ class InputTodo extends Component {
           name="title"
           className="input-text"
         />
-        <button className="input-submit">Submit</button>
+        <button type="submit" className="input-submit">
+          Submit
+        </button>
       </form>
     );
   }
