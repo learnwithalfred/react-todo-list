@@ -1,1 +1,1 @@
-# A react application that we are building blog
+# This is a react blog application
